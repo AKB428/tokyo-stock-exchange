@@ -1,0 +1,7 @@
+__pycache__/
+/chart/*.png
+/chart/_*
+.DS_Store
+*.html
+ta-lib/
+ta-lib-0.4.0-src.tar.gz

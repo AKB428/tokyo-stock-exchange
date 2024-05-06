@@ -37,6 +37,16 @@ print("------------")
 tse.print_category_counts()
 
 print("------------")
+# 条件を満たす企業を検索し、出力
+def single_category_task():
+    matching_items = tse.category_find("規模区分=TOPIX Core30")
+    for code, name in matching_items:
+        print(f"{name} ({code})")
+
+single_category_task()
+
+
+print("------------")
 def category_task():
     matching_items = tse.category_find("規模区分=TOPIX Mid400", "33業種区分=陸運業")
     for code, name in matching_items:

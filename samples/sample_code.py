@@ -1,8 +1,9 @@
 from tokyo_stock_exchange import tse
 
-# ライブラリの関数を使用してみる
 csv_file_path = tse.csv_file_path
 print(csv_file_path)
+
+print(tse.get_file_date())
 
 stock_name = tse.get_name_by_code("7832")
 print(stock_name)

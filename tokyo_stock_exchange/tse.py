@@ -2,6 +2,8 @@ import pandas as pd
 import os
 import re
 
+CSV_FILE_NAME = 'tse.csv'
+
 def print_category_counts():
     # 各カテゴリーごとに処理
     for category, subdict in category_code_hashes.items():
@@ -13,6 +15,11 @@ def print_category_counts():
             print(f"{category_value} = {count}")
         
         print()  # カテゴリー間に空行を入れる
+
+def get_file_date():
+    data_csv = pd.read_csv(csv_file_path)
+    
+    return data_csv.iloc[0]['日付']
 
 def create_category_code_hash(csv_file_path):
     # CSVファイルを読み込む
@@ -142,7 +149,7 @@ def get_stock_info(stock_name_or_code):
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # CSVファイルのパスを動的に設定する
-csv_file_path = os.path.join(script_dir, 'tse.csv')
+csv_file_path = os.path.join(script_dir, CSV_FILE_NAME)
 if 'TSE_LIST_DATA_PATH' in os.environ:
     csv_file_path = os.environ['TSE_LIST_DATA_PATH']
 category_code_hashes = create_category_code_hash(csv_file_path)

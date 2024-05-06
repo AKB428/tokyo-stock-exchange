@@ -7,7 +7,7 @@ setup(
     author='AKB428',
     author_email='',
     packages=['tokyo_stock_exchange'],
-    package_data={'tokyo_stock_exchange': ['tse.csv']},
+    package_data={'tokyo_stock_exchange': ['tse.csv', 'tse20240229.csv']},
     install_requires=[
         # Add any dependencies your library needs
         "pandas"

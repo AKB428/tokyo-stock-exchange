@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import re
 
 def print_category_counts(category_code_hashes):
     # 各カテゴリーごとに処理
@@ -118,7 +119,11 @@ def get_stock_info(stock_name_or_code):
     Raises:
         ValueError: If the stock name or code cannot be found.
     """
-    if stock_name_or_code.isdigit():
+    # 正規表現パターンを定義
+    # https://www.jpx.co.jp/sicc/code-pr/
+    pattern = r"^\d{4}$|^\d{3}[A-Z]$|^\d[A-Z]\d{2}$"
+
+    if re.match(pattern, stock_name_or_code):
         stock_code = stock_name_or_code
         stock_name = get_name_by_code(stock_code)  # This function should be defined in topixlib
         if stock_name is None:

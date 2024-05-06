@@ -5,3 +5,5 @@ __pycache__/
 *.html
 ta-lib/
 ta-lib-0.4.0-src.tar.gz
+build/
+tokyo_stock_exchange.egg-info/

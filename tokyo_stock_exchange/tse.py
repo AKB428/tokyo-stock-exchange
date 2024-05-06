@@ -2,7 +2,7 @@ import pandas as pd
 import os
 import re
 
-def print_category_counts(category_code_hashes):
+def print_category_counts():
     # 各カテゴリーごとに処理
     for category, subdict in category_code_hashes.items():
         print(f"[{category}]")
@@ -34,12 +34,12 @@ def create_category_code_hash(csv_file_path):
     
     return category_dicts
 
-def print_category(category_code_hashes, category, category_value):
+def print_category(category, category_value):
     if category in category_code_hashes and category_value in category_code_hashes[category]:
         for code, name in category_code_hashes[category][category_value].items():
             print(f"{code}\t{name}")
 
-def print_category_find(category_code_hashes, *criteria):
+def print_category_find(*criteria):
     # 初期の銘柄リスト（すべての銘柄）を取得
     matching_items = None
 
@@ -146,18 +146,3 @@ csv_file_path = os.path.join(script_dir, 'tse.csv')
 if 'TSE_LIST_DATA_PATH' in os.environ:
     csv_file_path = os.environ['TSE_LIST_DATA_PATH']
 category_code_hashes = create_category_code_hash(csv_file_path)
-
-if __name__ == "__main__":
-    print_category_counts(category_code_hashes)
-
-    print_category(category_code_hashes, "規模区分", "TOPIX Core30")
-
-    #print() 
-
-    #print_category(category_code_hashes, "17業種区分", "銀行")
-
-    print("-") 
-
-    #print_category_find(category_code_hashes, "市場・商品区分=プライム（内国株式）", "33業種区分=情報・通信業")
-
-    #print_category_find(category_code_hashes, "規模区分=TOPIX Mid400", "33業種区分=陸運業")

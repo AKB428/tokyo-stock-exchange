@@ -28,3 +28,19 @@ print(sotck_info[0], sotck_info[1])
 
 sotck_info = tse.get_stock_info("ソラコム")
 print(sotck_info[0], sotck_info[1])
+
+print("------------")
+tse.print_category("規模区分", "TOPIX Core30")
+
+print("------------")
+tse.print_category_counts()
+
+print("------------")
+def category_task():
+    matching_items = tse.category_find("規模区分=TOPIX Mid400", "33業種区分=陸運業")
+    for code, name in matching_items:
+        print(f"{name} ({code})")
+        # 証券コードを用いて株価を取得してチャートを書いたり分析するコードを書く
+        # getStockDataAndGenChart(code)
+        
+category_task()
